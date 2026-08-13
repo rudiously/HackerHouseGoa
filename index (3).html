@@ -1,0 +1,1282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hacker House Goa 2026 — Frame In Goa</title>
+<meta name="description" content="Make your Hacker House Goa builder pass. Drop your photo, name your stack, get stamped.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Kalam:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#122c1e;
+  --jungle:#25502f;
+  --fern:#3f7a49;
+  --yellow:#f2b134;
+  --yellow-deep:#d99420;
+  --coral:#ef6f5b;
+  --turq:#2f9e97;
+  --cream:#f4e9cb;
+  --cream-dim:#e9dbb2;
+  --brown:#5c3a22;
+  --brown-dark:#432a18;
+  --ink:#17190f;
+  --font-display:'Anton', sans-serif;
+  --font-hand:'Kalam', cursive;
+  --font-ui:'Space Grotesk', sans-serif;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--forest);
+  color:var(--cream);
+  font-family:var(--font-ui);
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* paper grain overlay across whole page */
+.grain{
+  position:fixed; inset:0; pointer-events:none; z-index:999;
+  opacity:.16; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+button{font-family:inherit;cursor:pointer;}
+input{font-family:inherit;}
+.hidden{display:none !important;}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+
+/* ============ TOP SCENE / HERO ============ */
+.scene-top{
+  position:relative;
+  min-height:78vh;
+  background:linear-gradient(180deg,#0e2216 0%, var(--forest) 45%, #163a25 100%);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  padding-top:6vh;
+}
+.jungle-svg{
+  position:absolute; inset:0; width:100%; height:100%;
+}
+.jungle-svg .sway{ transform-origin:center top; animation:sway 7s ease-in-out infinite; }
+.jungle-svg .sway2{ transform-origin:center top; animation:sway 9s ease-in-out infinite reverse; }
+@keyframes sway{
+  0%,100%{ transform:rotate(-1.2deg); }
+  50%{ transform:rotate(1.4deg); }
+}
+@media (prefers-reduced-motion: reduce){
+  .jungle-svg .sway, .jungle-svg .sway2{ animation:none; }
+}
+
+.wordmark-wrap{
+  position:relative; z-index:3;
+  text-align:center;
+  padding:0 5vw;
+}
+.eyebrow{
+  font-family:var(--font-hand);
+  font-size:clamp(13px,1.6vw,17px);
+  letter-spacing:.14em;
+  color:var(--cream-dim);
+  text-transform:uppercase;
+  margin:0 0 6px;
+}
+.wordmark{
+  position:relative;
+  display:inline-block;
+}
+.wordmark .house{
+  font-family:var(--font-display);
+  font-size:clamp(46px,11vw,118px);
+  line-height:.86;
+  letter-spacing:.01em;
+  color:var(--yellow);
+  text-shadow:3px 3px 0 var(--brown-dark), 0 0 24px rgba(0,0,0,.25);
+  margin:0;
+  filter:url(#roughen);
+}
+.wordmark .goa{
+  font-family:var(--font-display);
+  font-size:clamp(58px,15.5vw,168px);
+  color:var(--coral);
+  position:relative;
+  display:inline-block;
+  margin-top:-2.5vw;
+  transform:rotate(-4deg);
+  text-shadow:3px 3px 0 var(--brown-dark);
+  filter:url(#roughen);
+}
+.wordmark .goa .leaf-o{
+  position:absolute;
+  width:.9em; height:.9em;
+  top:8%; left:26%;
+  pointer-events:none;
+}
+.year-badge{
+  position:absolute;
+  right:-2px; bottom:6%;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--font-ui);
+  font-weight:700;
+  font-size:clamp(11px,1.3vw,15px);
+  padding:4px 9px;
+  border-radius:3px;
+  transform:rotate(6deg);
+  box-shadow:2px 2px 0 var(--brown-dark);
+}
+.frame-in-goa{
+  font-family:var(--font-hand);
+  font-weight:700;
+  letter-spacing:.08em;
+  font-size:clamp(12px,1.6vw,16px);
+  color:var(--turq);
+  margin:10px 0 0;
+  text-transform:uppercase;
+}
+.tagline{
+  font-family:var(--font-ui);
+  font-weight:600;
+  letter-spacing:.16em;
+  font-size:clamp(13px,1.9vw,19px);
+  color:var(--cream);
+  margin:22px 0 0;
+  text-transform:uppercase;
+  position:relative; z-index:3;
+}
+.tagline::before, .tagline::after{
+  content:"✺";
+  color:var(--yellow);
+  margin:0 10px;
+  font-size:.8em;
+  opacity:.8;
+}
+.scroll-hint{
+  position:relative; z-index:3;
+  margin-top:26px;
+  font-family:var(--font-hand);
+  color:var(--cream-dim);
+  font-size:14px;
+}
+.scroll-hint svg{ display:block; margin:6px auto 0; animation:bob 1.8s ease-in-out infinite; }
+@keyframes bob{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);} }
+
+/* ============ SHACK SCENE ============ */
+.shack-scene{
+  position:relative;
+  background:linear-gradient(180deg,#163a25 0%, var(--jungle) 55%, #1c4128 100%);
+  padding:6vh 5vw 0;
+  overflow:hidden;
+}
+.shack-scene .bg-hills{ position:absolute; inset:0; z-index:0; }
+
+.shack{
+  position:relative;
+  z-index:2;
+  max-width:520px;
+  margin:0 auto;
+}
+.shack-roof{
+  position:relative;
+  height:64px;
+  background:
+    repeating-linear-gradient(115deg, #3a2213 0 10px, #4a2c18 10px 20px);
+  clip-path:polygon(2% 100%, 0% 30%, 10% 6%, 50% 0%, 90% 6%, 100% 30%, 98% 100%);
+  box-shadow: inset 0 -6px 0 rgba(0,0,0,.25);
+  border:2px solid var(--ink);
+  border-bottom:none;
+}
+.roof-hang{
+  position:absolute; top:-26px; left:50%; transform:translateX(-50%) rotate(-3deg);
+  font-family:var(--font-hand); font-weight:700; color:var(--cream);
+  background:var(--coral); padding:4px 12px; border-radius:2px;
+  font-size:13px; letter-spacing:.05em; white-space:nowrap;
+  box-shadow:2px 2px 0 var(--brown-dark);
+}
+.shack-body{
+  position:relative;
+  background:
+    repeating-linear-gradient(180deg, #2c5d38 0 34px, #275031 34px 36px);
+  border:3px solid var(--ink);
+  border-top:none;
+  padding:20px 18px 26px;
+  box-shadow:0 22px 40px rgba(0,0,0,.35);
+}
+.signboard{
+  background:var(--yellow);
+  color:var(--ink);
+  font-family:var(--font-display);
+  font-size:clamp(20px,4.4vw,30px);
+  letter-spacing:.03em;
+  text-align:center;
+  padding:8px 6px;
+  border:3px solid var(--ink);
+  transform:rotate(-.6deg);
+  box-shadow:3px 3px 0 var(--brown-dark);
+  margin-bottom:16px;
+}
+.deco-row{
+  display:flex; justify-content:space-between; align-items:flex-start;
+  margin-bottom:8px;
+  pointer-events:none;
+}
+.deco-row svg{ display:block; }
+
+.window{
+  position:relative;
+  background:var(--cream);
+  border:5px solid var(--brown);
+  outline:2px solid var(--ink);
+  padding:20px 18px 22px;
+  box-shadow:inset 0 0 0 3px var(--cream-dim), 0 8px 0 var(--brown-dark);
+}
+.window::before{ /* vine climbing corner */
+  content:"";
+  position:absolute; top:-30px; left:-24px;
+  width:80px; height:80px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath d='M5 78 C 10 50, 5 30, 30 10 C 45 0, 55 8, 50 20' stroke='%233f7a49' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='30' cy='12' r='7' fill='%233f7a49'/%3E%3Ccircle cx='14' cy='40' r='6' fill='%232f9e97'/%3E%3Ccircle cx='42' cy='4' r='5' fill='%23ef6f5b'/%3E%3C/svg%3E") no-repeat center/contain;
+  z-index:4;
+  pointer-events:none;
+}
+.step{ margin-bottom:16px; }
+.step:last-of-type{ margin-bottom:0; }
+.label{
+  font-family:var(--font-ui);
+  font-weight:700;
+  letter-spacing:.14em;
+  font-size:12px;
+  color:var(--jungle);
+  margin:0 0 8px;
+  text-transform:uppercase;
+}
+.photo-drop{
+  position:relative;
+  width:200px; height:200px;
+  margin:0 auto 10px;
+  background:var(--cream-dim);
+  border:2.5px dashed var(--brown);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+  overflow:hidden;
+}
+.photo-drop.has-photo{ border-style:solid; }
+.photo-drop:active{ transform:scale(.99); }
+#previewCanvas{ width:100%; height:100%; display:block; touch-action:none; }
+.drop-hint{
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; color:var(--brown);
+  font-family:var(--font-ui); font-weight:700; letter-spacing:.06em;
+  font-size:13px; pointer-events:none; padding:10px;
+}
+.drop-hint span{ display:block; font-weight:500; font-size:11px; margin-top:6px; color:#8a6a45; letter-spacing:.08em; }
+.drop-hint svg{ margin-bottom:8px; }
+.zoom-row{
+  display:flex; align-items:center; gap:8px; max-width:200px; margin:0 auto 10px;
+}
+.zoom-row span{ font-size:11px; color:var(--brown); }
+input[type="range"]{ flex:1; accent-color:var(--coral); }
+.upload-btn{
+  display:block;
+  width:200px; margin:0 auto;
+  text-align:center;
+  background:var(--jungle);
+  color:var(--cream);
+  font-weight:700; letter-spacing:.14em; font-size:12px;
+  padding:9px 0;
+  border:2px solid var(--ink);
+  box-shadow:2px 2px 0 var(--brown-dark);
+}
+.upload-btn:active{ transform:translate(1px,1px); box-shadow:1px 1px 0 var(--brown-dark); }
+
+.wood-input{
+  display:block; width:100%;
+  background:#fffaf0;
+  border:2px solid var(--brown);
+  padding:10px 12px;
+  font-size:16px;
+  color:var(--ink);
+  outline:none;
+}
+.wood-input:focus{ border-color:var(--coral); }
+.wood-input::placeholder{ color:#a99a78; }
+
+.generate-btn{
+  display:block; width:100%; margin-top:6px;
+  background:var(--coral);
+  color:var(--cream);
+  border:3px solid var(--ink);
+  font-family:var(--font-display);
+  letter-spacing:.05em;
+  font-size:22px;
+  padding:12px 0;
+  box-shadow:4px 4px 0 var(--brown-dark);
+  transition:transform .08s;
+}
+.generate-btn:active{ transform:translate(2px,2px); box-shadow:2px 2px 0 var(--brown-dark); }
+.generate-btn:disabled{ opacity:.5; cursor:not-allowed; }
+.error-msg{
+  color:var(--coral);
+  font-size:12px;
+  font-weight:700;
+  text-align:center;
+  margin-top:8px;
+  min-height:14px;
+}
+
+.shack-shelf{
+  max-width:520px; margin:0 auto;
+  display:flex; justify-content:space-between; align-items:flex-end;
+  padding:10px 6px 0;
+  position:relative; z-index:2;
+}
+
+.grass-bottom{ position:relative; height:100px; z-index:1; margin-top:-4px; }
+
+/* stamp overlay animation */
+.stamp-overlay{
+  position:fixed; inset:0; z-index:500;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(18,44,30,.55);
+  opacity:0; pointer-events:none;
+}
+.stamp-overlay.active{ opacity:1; pointer-events:all; animation:fadeOut .9s ease forwards; }
+.stamp-mark{
+  font-family:var(--font-display);
+  font-size:14vw;
+  color:var(--yellow);
+  border:10px solid var(--yellow);
+  padding:0 .3em;
+  transform:scale(2.6) rotate(-8deg);
+  opacity:0;
+  animation:stampDown .55s cubic-bezier(.2,1.4,.4,1) forwards;
+}
+@keyframes stampDown{
+  0%{ transform:scale(2.6) rotate(-8deg); opacity:0; }
+  55%{ transform:scale(.94) rotate(-8deg); opacity:1; }
+  70%{ transform:scale(1.05) rotate(-8deg); opacity:1;}
+  100%{ transform:scale(1) rotate(-8deg); opacity:1; }
+}
+@keyframes fadeOut{
+  0%,60%{ opacity:1; }
+  100%{ opacity:0; }
+}
+
+/* ============ RESULT SCENE ============ */
+.result-scene, .crew-scene{
+  min-height:100vh;
+  background:linear-gradient(180deg,#1c4128 0%, var(--forest) 100%);
+  padding:8vh 5vw 10vh;
+  text-align:center;
+}
+.ready-label{
+  font-family:var(--font-hand);
+  color:var(--yellow);
+  font-size:clamp(20px,4vw,30px);
+  letter-spacing:.03em;
+  margin:22px 0 4px;
+}
+canvas#posterCanvas, canvas#crewCanvas{
+  max-width:min(92vw, 420px);
+  width:100%;
+  height:auto;
+  border:4px solid var(--ink);
+  box-shadow:0 18px 40px rgba(0,0,0,.4);
+  background:var(--cream);
+}
+.result-actions{
+  display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+  margin:22px 0 10px;
+}
+.btn-primary{
+  background:var(--yellow); color:var(--ink);
+  border:3px solid var(--ink);
+  font-weight:700; letter-spacing:.1em; font-size:13px;
+  padding:12px 22px;
+  box-shadow:3px 3px 0 var(--brown-dark);
+}
+.btn-primary:active{ transform:translate(2px,2px); box-shadow:1px 1px 0 var(--brown-dark); }
+.btn-secondary{
+  background:var(--forest); color:var(--cream);
+  border:3px solid var(--cream-dim);
+  font-weight:700; letter-spacing:.1em; font-size:13px;
+  padding:12px 22px;
+}
+.link-row{ margin-top:14px; display:flex; gap:22px; justify-content:center; flex-wrap:wrap; }
+.link-btn{
+  background:none; border:none;
+  color:var(--turq);
+  font-family:var(--font-hand); font-weight:700; font-size:16px;
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+
+/* crew scene */
+.crew-form{ max-width:420px; margin:0 auto 20px; text-align:left; }
+.crew-member{
+  display:flex; align-items:center; gap:10px;
+  background:var(--cream); border:2px solid var(--ink);
+  padding:8px 10px; margin-bottom:8px;
+}
+.crew-member .thumb{
+  width:44px; height:44px; border-radius:50%; overflow:hidden;
+  border:2px solid var(--brown); flex:none; background:var(--cream-dim);
+  display:flex; align-items:center; justify-content:center;
+}
+.crew-member .thumb img{ width:100%; height:100%; object-fit:cover; }
+.crew-member input[type=text]{
+  flex:1; border:1px solid var(--brown); padding:6px 8px; font-size:14px; color:var(--ink); min-width:0;
+}
+.crew-member .rm{
+  background:none; border:none; color:var(--coral); font-weight:700; font-size:18px; line-height:1;
+}
+.crew-add{
+  display:block; width:100%; margin-top:4px;
+  background:var(--jungle); color:var(--cream);
+  border:2px dashed var(--cream-dim);
+  padding:10px; font-weight:700; letter-spacing:.08em; font-size:12px;
+}
+.crew-add:disabled{ opacity:.4; }
+
+.footer-mark{
+  margin-top:40px; font-family:var(--font-hand); color:var(--cream-dim); font-size:13px; letter-spacing:.05em;
+}
+
+@media (max-width:600px){
+  .shack-scene{ padding:5vh 4vw 0; }
+  .window::before{ display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- SVG filter defs for hand-drawn edge roughening -->
+<svg width="0" height="0" style="position:absolute">
+  <filter id="roughen"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.09" numOctaves="2" result="warp"/><feDisplacementMap in="SourceGraphic" in2="warp" scale="4"/></filter>
+</svg>
+
+<div class="grain"></div>
+
+<!-- ============ HERO / JUNGLE TOP ============ -->
+<header class="scene-top">
+  <svg class="jungle-svg" viewBox="0 0 1440 820" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <!-- distant hills -->
+    <path d="M0 560 Q 180 480 380 540 T 760 520 T 1160 555 T 1440 520 V820 H0 Z" fill="#1a4028"/>
+    <path d="M0 610 Q 220 550 460 600 T 900 580 T 1440 605 V820 H0 Z" fill="#1f4a2e"/>
+    <!-- sun glow -->
+    <circle cx="1180" cy="150" r="150" fill="#f2b134" opacity=".16"/>
+    <circle cx="1180" cy="150" r="86" fill="#f2b134" opacity=".5"/>
+    <!-- ocean hint -->
+    <path d="M0 640 Q 90 630 180 640 T 360 640 T 540 640 T 720 640 T 900 640 T 1080 640 T 1260 640 T 1440 640 V700 H0 Z" fill="#2f9e97" opacity=".28"/>
+
+    <!-- birds -->
+    <g stroke="#f4e9cb" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8">
+      <path d="M240 110 q 14 -14 28 0 q 14 -14 28 0"/>
+      <path d="M320 150 q 10 -10 20 0 q 10 -10 20 0"/>
+      <path d="M980 90 q 12 -12 24 0 q 12 -12 24 0"/>
+    </g>
+
+    <!-- LEFT coconut tree -->
+    <g class="sway">
+      <path d="M120 820 C 110 640, 150 500, 100 360" stroke="#5c3a22" stroke-width="16" fill="none" stroke-linecap="round"/>
+      <g fill="#25502f" stroke="#122c1e" stroke-width="3">
+        <path d="M100 360 C 20 320, -40 340, -70 300 C -20 300, 40 320, 100 360 Z"/>
+        <path d="M100 360 C 30 290, 10 220, -30 190 C 0 250, 30 300, 100 360 Z"/>
+        <path d="M100 360 C 130 270, 120 190, 150 140 C 110 200, 90 280, 100 360 Z"/>
+        <path d="M100 360 C 180 310, 250 320, 300 290 C 240 300, 170 320, 100 360 Z"/>
+        <path d="M100 360 C 160 300, 210 240, 260 220 C 200 260, 150 310, 100 360 Z"/>
+      </g>
+      <circle cx="95" cy="368" r="9" fill="#8a5a2a"/>
+      <circle cx="112" cy="378" r="9" fill="#8a5a2a"/>
+      <circle cx="104" cy="392" r="9" fill="#8a5a2a"/>
+    </g>
+
+    <!-- RIGHT coconut tree -->
+    <g class="sway2">
+      <path d="M1330 820 C 1345 660, 1300 520, 1350 380" stroke="#5c3a22" stroke-width="16" fill="none" stroke-linecap="round"/>
+      <g fill="#2c5d38" stroke="#122c1e" stroke-width="3">
+        <path d="M1350 380 C 1430 340, 1490 355, 1520 315 C 1470 320, 1410 340, 1350 380 Z"/>
+        <path d="M1350 380 C 1420 305, 1440 235, 1480 205 C 1450 265, 1420 320, 1350 380 Z"/>
+        <path d="M1350 380 C 1320 290, 1330 210, 1300 160 C 1340 220, 1360 300, 1350 380 Z"/>
+        <path d="M1350 380 C 1270 330, 1200 340, 1150 310 C 1210 320, 1280 340, 1350 380 Z"/>
+        <path d="M1350 380 C 1290 320, 1240 260, 1190 240 C 1250 280, 1300 330, 1350 380 Z"/>
+      </g>
+    </g>
+
+    <!-- top hanging branches -->
+    <path d="M0 0 C 60 40, 40 90, 110 120 C 70 100, 20 70, 0 0 Z" fill="#25502f" stroke="#122c1e" stroke-width="2"/>
+    <path d="M60 0 C 120 30, 130 80, 200 100 C 150 80, 100 50, 60 0 Z" fill="#3f7a49" opacity=".9"/>
+    <path d="M1440 0 C 1380 40, 1400 90, 1330 120 C 1370 100, 1420 70, 1440 0 Z" fill="#25502f" stroke="#122c1e" stroke-width="2"/>
+    <path d="M1380 0 C 1320 30, 1310 80, 1240 100 C 1290 80, 1340 50, 1380 0 Z" fill="#3f7a49" opacity=".9"/>
+
+    <!-- vines hanging -->
+    <path d="M700 0 C 690 60, 720 100, 700 170" stroke="#3f7a49" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <circle cx="700" cy="60" r="8" fill="#3f7a49"/>
+    <circle cx="716" cy="110" r="7" fill="#2f9e97"/>
+    <circle cx="694" cy="150" r="7" fill="#ef6f5b"/>
+
+    <!-- bottom grass / bushes -->
+    <g fill="#1a4028">
+      <path d="M0 820 Q 60 700 140 820 Z"/>
+      <path d="M100 820 Q 160 680 220 820 Z"/>
+      <path d="M1300 820 Q 1360 700 1440 820 Z"/>
+      <path d="M1220 820 Q 1280 680 1340 820 Z"/>
+    </g>
+    <g stroke="#3f7a49" stroke-width="6" stroke-linecap="round">
+      <path d="M40 820 Q 30 770 20 820"/>
+      <path d="M70 820 Q 80 760 90 820"/>
+      <path d="M1360 820 Q 1350 770 1340 820"/>
+      <path d="M1400 820 Q 1410 760 1420 820"/>
+    </g>
+  </svg>
+
+  <div class="wordmark-wrap">
+    <p class="eyebrow">a secret hacker house in</p>
+    <div class="wordmark">
+      <h1 class="house">HACKER HOUSE</h1><br/>
+      <span class="goa">GOA
+        <span class="year-badge">2026</span>
+      </span>
+    </div>
+    <p class="frame-in-goa">✦ Frame In Goa ✦</p>
+    <p class="tagline">Make your builder pass</p>
+    <div class="scroll-hint">
+      find the shack
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f4e9cb" stroke-width="2"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SHACK / GENERATOR ============ -->
+<main class="shack-scene" id="shackScene">
+  <svg class="bg-hills" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 460 Q 200 400 420 450 T 860 430 T 1440 460 V700 H0 Z" fill="#1c4128"/>
+    <path d="M0 520 Q 240 480 480 520 T 960 500 T 1440 520 V700 H0 Z" fill="#204c2f"/>
+    <g fill="#204c2f" opacity=".9">
+      <path d="M60 700 C 40 560, 90 460, 40 340" stroke="#432a18" stroke-width="10" fill="none"/>
+      <path d="M40 340 C -10 300, -50 320, -70 290 C -30 290, 10 310, 40 340Z"/>
+      <path d="M40 340 C 0 280, -10 220, -40 190 C -10 240, 20 290, 40 340Z"/>
+      <path d="M40 340 C 90 290, 120 240, 150 220 C 110 260, 70 300, 40 340Z"/>
+    </g>
+    <g fill="#204c2f" opacity=".9">
+      <path d="M1380 700 C 1400 560, 1350 460, 1400 340" stroke="#432a18" stroke-width="10" fill="none"/>
+      <path d="M1400 340 C 1450 300, 1490 320, 1510 290 C 1470 290, 1430 310, 1400 340Z"/>
+      <path d="M1400 340 C 1440 280, 1450 220, 1480 190 C 1450 240, 1420 290, 1400 340Z"/>
+      <path d="M1400 340 C 1350 290, 1320 240, 1290 220 C 1330 260, 1370 300, 1400 340Z"/>
+    </g>
+    <g fill="#f2b134" opacity=".7"><circle cx="1300" cy="90" r="4"/><circle cx="150" cy="120" r="3"/></g>
+    <g stroke="#ef6f5b" fill="#ef6f5b" opacity=".85">
+      <circle cx="260" cy="470" r="8"/><circle cx="278" cy="480" r="6"/>
+      <circle cx="1180" cy="480" r="7"/><circle cx="1198" cy="470" r="6"/>
+    </g>
+  </svg>
+
+  <div class="shack">
+    <div class="shack-roof"><span class="roof-hang">est. builders only</span></div>
+    <div class="shack-body">
+      <div class="signboard">HACKER HOUSE</div>
+
+      <div class="deco-row" aria-hidden="true">
+        <svg width="46" height="46" viewBox="0 0 46 46"><g stroke="#122c1e" stroke-width="1.5"><rect x="6" y="14" width="24" height="18" rx="2" fill="#432a18"/><circle cx="18" cy="23" r="6" fill="#e9dbb2"/><rect x="24" y="10" width="8" height="6" rx="1" fill="#432a18"/></g></svg>
+        <svg width="40" height="40" viewBox="0 0 40 40"><g><path d="M20 6 C 26 12 26 20 20 26 C 14 20 14 12 20 6Z" fill="#ef6f5b" stroke="#122c1e" stroke-width="1.5"/><circle cx="20" cy="16" r="3" fill="#f2b134"/></g></svg>
+      </div>
+
+      <form id="generatorForm">
+        <div class="step" id="stepPhoto">
+          <p class="label">Your photo</p>
+          <div class="photo-drop" id="photoDrop" tabindex="0" role="button" aria-label="Upload your photo">
+            <canvas id="previewCanvas" width="260" height="260"></canvas>
+            <div class="drop-hint" id="dropHint">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5c3a22" stroke-width="2"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M4 16v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>
+              DROP YOUR PHOTO
+              <span>JPG • PNG • HEIC</span>
+            </div>
+          </div>
+          <div class="zoom-row hidden" id="zoomRow">
+            <span>−</span>
+            <input type="range" id="zoomSlider" min="1" max="3" step="0.01" value="1" aria-label="Zoom photo">
+            <span>+</span>
+          </div>
+          <label class="upload-btn" for="fileInput">UPLOAD</label>
+          <input type="file" id="fileInput" accept="image/*,.heic,.heif" class="sr-only">
+        </div>
+
+        <div class="step">
+          <p class="label">Your name</p>
+          <input type="text" id="nameInput" class="wood-input" placeholder="Enter name" maxlength="28">
+        </div>
+
+        <div class="step">
+          <p class="label">Your stack</p>
+          <input type="text" id="stackInput" class="wood-input" placeholder="Enter your role" maxlength="30">
+        </div>
+
+        <button type="submit" class="generate-btn" id="generateBtn" disabled>GENERATE</button>
+        <p class="error-msg" id="errorMsg"></p>
+      </form>
+    </div>
+  </div>
+
+  <div class="shack-shelf" aria-hidden="true">
+    <svg width="60" height="70" viewBox="0 0 60 70"><path d="M30 4 C 40 4 46 14 42 26 C 38 20 34 18 30 18 C 26 18 22 20 18 26 C 14 14 20 4 30 4Z" fill="#f2b134" stroke="#122c1e" stroke-width="1.5"/><rect x="24" y="26" width="12" height="34" fill="#25502f"/></svg>
+    <svg width="70" height="46" viewBox="0 0 70 46"><rect x="4" y="8" width="62" height="32" rx="2" fill="#f4e9cb" stroke="#122c1e" stroke-width="1.5" transform="rotate(-4 35 24)"/></svg>
+    <svg width="50" height="60" viewBox="0 0 50 60"><path d="M25 2 C 34 10 34 20 25 28 C 16 20 16 10 25 2Z" fill="#ef6f5b" stroke="#122c1e" stroke-width="1.5"/><rect x="21" y="28" width="8" height="30" fill="#3f7a49"/></svg>
+  </div>
+
+  <svg class="grass-bottom" viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <g fill="#122c1e">
+      <path d="M0 100 Q 40 20 80 100 Z"/><path d="M60 100 Q 100 30 140 100 Z"/><path d="M120 100 Q 160 10 200 100 Z"/>
+      <path d="M1240 100 Q 1280 20 1320 100 Z"/><path d="M1300 100 Q 1340 30 1380 100 Z"/><path d="M1360 100 Q 1400 10 1440 100 Z"/>
+    </g>
+  </svg>
+</main>
+
+<!-- stamp animation overlay -->
+<div class="stamp-overlay" id="stampOverlay"><div class="stamp-mark" id="stampMark">STAMPED</div></div>
+
+<!-- ============ RESULT SCENE ============ -->
+<section class="result-scene hidden" id="resultScene">
+  <p class="eyebrow">frame in goa</p>
+  <canvas id="posterCanvas" width="1000" height="1250"></canvas>
+  <p class="ready-label">Your frame is ready</p>
+  <div class="result-actions">
+    <button class="btn-primary" id="downloadBtn">DOWNLOAD</button>
+    <button class="btn-secondary" id="shareBtn">SHARE TO X</button>
+  </div>
+  <div class="link-row">
+    <button class="link-btn" id="crewBtn">Build the crew →</button>
+    <button class="link-btn" id="anotherBtn">Make another</button>
+  </div>
+  <p class="footer-mark">#FrameInGoa</p>
+</section>
+
+<!-- ============ CREW SCENE ============ -->
+<section class="crew-scene hidden" id="crewScene">
+  <p class="eyebrow">frame in goa</p>
+  <h2 class="frame-in-goa" style="font-size:22px;color:var(--yellow)">Build the crew</h2>
+  <div class="crew-form" id="crewForm">
+    <div id="crewList"></div>
+    <button type="button" class="crew-add" id="crewAddBtn">+ ADD TEAMMATE (up to 5)</button>
+    <input type="file" id="crewFileInput" accept="image/*,.heic,.heif" class="sr-only">
+    <button type="button" class="generate-btn" id="crewGenerateBtn" style="margin-top:14px" disabled>GENERATE CREW</button>
+    <p class="error-msg" id="crewError"></p>
+  </div>
+
+  <div id="crewResultWrap" class="hidden">
+    <canvas id="crewCanvas" width="1000" height="1250"></canvas>
+    <p class="ready-label">Your crew frame is ready</p>
+    <div class="result-actions">
+      <button class="btn-primary" id="crewDownloadBtn">DOWNLOAD</button>
+      <button class="btn-secondary" id="crewShareBtn">SHARE TO X</button>
+    </div>
+  </div>
+  <div class="link-row">
+    <button class="link-btn" id="crewBackBtn">← Back to my frame</button>
+  </div>
+  <p class="footer-mark">#FrameInGoa</p>
+</section>
+
+<script>
+(function(){
+  "use strict";
+
+  // Swallow noisy cross-origin "Script error." reports from third-party
+  // scripts (e.g. a blocked CDN) so they never surface as page crashes.
+  window.addEventListener("error", function(e){
+    if(e && e.message === "Script error." ){ e.preventDefault(); }
+  });
+
+  /* ---------- helpers ---------- */
+  const $ = (id)=>document.getElementById(id);
+  const VIEW = 260;
+
+  function isHeic(file){
+    const n=(file.name||"").toLowerCase();
+    return n.endsWith(".heic")||n.endsWith(".heif")||file.type==="image/heic"||file.type==="image/heif";
+  }
+
+  // Lazily and safely load heic2any only when a HEIC file actually shows up.
+  // Never throws an unhandled/global error — always resolves, with null on failure.
+  let heicLoadPromise=null;
+  function loadHeic2Any(){
+    if(window.heic2any) return Promise.resolve(window.heic2any);
+    if(heicLoadPromise) return heicLoadPromise;
+    heicLoadPromise = new Promise((resolve)=>{
+      try{
+        const s=document.createElement("script");
+        s.src="https://cdnjs.cloudflare.com/ajax/libs/heic2any/0.0.1/index.min.js";
+        s.async=true;
+        const done=(ok)=>resolve(ok && window.heic2any ? window.heic2any : null);
+        s.onload=()=>done(true);
+        s.onerror=()=>done(false);
+        setTimeout(()=>done(false), 8000);
+        document.head.appendChild(s);
+      }catch(e){
+        resolve(null);
+      }
+    });
+    return heicLoadPromise;
+  }
+
+  async function fileToImage(file){
+    let blob = file;
+    if(isHeic(file)){
+      const converter = await loadHeic2Any();
+      if(!converter){
+        throw new Error("HEIC isn't supported here. Try a JPG or PNG instead.");
+      }
+      try{
+        blob = await converter({blob:file, toType:"image/jpeg", quality:0.92});
+        if(Array.isArray(blob)) blob = blob[0];
+      }catch(e){
+        throw new Error("Could not read this HEIC photo. Try a JPG or PNG instead.");
+      }
+    }
+    const url = URL.createObjectURL(blob);
+    return new Promise((resolve,reject)=>{
+      const img = new Image();
+      img.onload = ()=>resolve(img);
+      img.onerror = ()=>reject(new Error("Could not open that photo. Try a JPG or PNG instead."));
+      img.src = url;
+    });
+  }
+
+  function fontsReady(){
+    if(document.fonts && document.fonts.ready) return document.fonts.ready;
+    return Promise.resolve();
+  }
+
+  function getBuilderClass(stackRaw){
+    const s = (stackRaw||"").toLowerCase();
+    const rules = [
+      [/\b(ai|ml|machine ?learning|llm|model)\b/, "THE MODEL MAKER"],
+      [/\b(full ?stack)\b/, "THE SHIPPER"],
+      [/\b(design|ui|ux|pixel)\b/, "THE PIXEL MAKER"],
+      [/\b(product|pm)\b/, "THE IDEA BUILDER"],
+      [/\b(data|analytics|analyst)\b/, "THE DATA DIGGER"],
+      [/\b(hardware|embedded|iot|circuit|electronics|robot)\b/, "THE CIRCUIT MAKER"],
+      [/\b(devops|infra|infrastructure|cloud|sre|platform)\b/, "THE SYSTEM TAMER"],
+      [/\b(security|hacker|cyber|pentest)\b/, "THE VAULT BREAKER"],
+      [/\b(game|unity|unreal)\b/, "THE WORLD MAKER"],
+      [/\b(blockchain|web3|crypto|smart contract)\b/, "THE CHAIN BUILDER"],
+      [/\b(backend|back-end|server|api)\b/, "THE ENGINE BUILDER"],
+      [/\b(frontend|front-end|react|web ?dev)\b/, "THE INTERFACE CRAFTER"],
+      [/\b(marketing|growth)\b/, "THE SIGNAL SENDER"],
+      [/\b(founder|ceo|solo)\b/, "THE RISK TAKER"],
+    ];
+    for(const [re,label] of rules){ if(re.test(s)) return label; }
+    return "THE BUILDER";
+  }
+
+  /* ---------- canvas decorative drawing (shared) ---------- */
+  function blobPath(ctx,cx,cy,r,jitter,seed){
+    ctx.beginPath();
+    const pts=26;
+    for(let i=0;i<=pts;i++){
+      const a=(i/pts)*Math.PI*2;
+      const rr=r*(1+jitter*Math.sin(a*5+seed)+jitter*0.4*Math.cos(a*3+seed*1.7));
+      const x=cx+Math.cos(a)*rr, y=cy+Math.sin(a)*rr;
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.closePath();
+  }
+
+  function drawLeaf(ctx,cx,cy,len,wid,angle,color,strokeColor){
+    ctx.save();
+    ctx.translate(cx,cy);
+    ctx.rotate(angle);
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.quadraticCurveTo(len*0.35,-wid,len,0);
+    ctx.quadraticCurveTo(len*0.35,wid,0,0);
+    ctx.closePath();
+    ctx.fillStyle=color;
+    ctx.fill();
+    ctx.strokeStyle=strokeColor||"rgba(18,44,30,.55)";
+    ctx.lineWidth=Math.max(1.5,len*0.02);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(len*0.06,0);
+    ctx.lineTo(len*0.9,0);
+    ctx.strokeStyle=strokeColor||"rgba(18,44,30,.4)";
+    ctx.lineWidth=1.4;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function leafCluster(ctx,x,y,baseAngle,scale,palette){
+    const specs=[[0.9,-.55,palette[0]],[1.1,0,palette[1]],[0.85,.55,palette[0]],[.6,1.1,palette[2]]];
+    specs.forEach(([lm,am,col])=>{
+      drawLeaf(ctx,x,y,120*scale*lm,26*scale,baseAngle+am,col);
+    });
+  }
+
+  function drawVine(ctx,points,color){
+    ctx.beginPath();
+    ctx.moveTo(points[0][0],points[0][1]);
+    for(let i=1;i<points.length;i++) ctx.lineTo(points[i][0],points[i][1]);
+    ctx.strokeStyle=color;
+    ctx.lineWidth=4;
+    ctx.lineCap="round";
+    ctx.stroke();
+    points.forEach((p,i)=>{ if(i%2===0){ ctx.beginPath(); ctx.arc(p[0],p[1],5,0,Math.PI*2); ctx.fillStyle=color; ctx.fill(); }});
+  }
+
+  function drawWave(ctx,x,y,w,amp,color,lw){
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    for(let i=0;i<=w;i+=16) ctx.lineTo(x+i, y+Math.sin(i*0.045)*amp);
+    ctx.strokeStyle=color;
+    ctx.lineWidth=lw;
+    ctx.lineCap="round";
+    ctx.stroke();
+  }
+
+  function roundRectPath(ctx,x,y,w,h,r){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y);
+    ctx.arcTo(x+w,y,x+w,y+h,r);
+    ctx.arcTo(x+w,y+h,x,y+h,r);
+    ctx.arcTo(x,y+h,x,y,r);
+    ctx.arcTo(x,y,x+w,y,r);
+    ctx.closePath();
+  }
+
+  function decorateBackground(ctx,W,H){
+    ctx.fillStyle="#f4e9cb";
+    ctx.fillRect(0,0,W,H);
+    // faint texture bands
+    ctx.fillStyle="rgba(63,122,73,.06)";
+    for(let i=0;i<6;i++) ctx.fillRect(0,i*H/6, W, 3);
+    // outer ink frame
+    ctx.strokeStyle="#17190f";
+    ctx.lineWidth=14;
+    ctx.strokeRect(11,11,W-22,H-22);
+    ctx.strokeStyle="#f2b134";
+    ctx.lineWidth=3;
+    ctx.strokeRect(22,22,W-44,H-44);
+    // corner leaf clusters
+    leafCluster(ctx,70,70,2.4,.7,["#3f7a49","#25502f","#2f9e97"]);
+    leafCluster(ctx,W-70,70,-2.4,.7,["#3f7a49","#25502f","#ef6f5b"]);
+    leafCluster(ctx,70,H-70,.7,.7,["#25502f","#3f7a49","#2f9e97"]);
+    leafCluster(ctx,W-70,H-70,-.7,.7,["#25502f","#3f7a49","#ef6f5b"]);
+  }
+
+  /* ---------- image-pan/zoom widget factory ---------- */
+  function makePhotoWidget(canvasId, dropId, hintId, zoomRowId, zoomSliderId){
+    const canvas=$(canvasId), drop=$(dropId), hint=$(hintId), zoomRow=$(zoomRowId), slider=$(zoomSliderId);
+    const ctx=canvas.getContext("2d");
+    const state={img:null, zoom:1, panX:0, panY:0};
+    let dragging=false, lastX=0, lastY=0;
+
+    function clamp(){
+      if(!state.img) return;
+      const base=Math.max(VIEW/state.img.width, VIEW/state.img.height);
+      const scale=base*state.zoom;
+      const dw=state.img.width*scale, dh=state.img.height*scale;
+      const minX=VIEW-dw, maxX=0, minY=VIEW-dh, maxY=0;
+      state.panX=Math.min(maxX,Math.max(minX,state.panX));
+      state.panY=Math.min(maxY,Math.max(minY,state.panY));
+    }
+    function draw(){
+      ctx.clearRect(0,0,VIEW,VIEW);
+      if(!state.img) return;
+      const base=Math.max(VIEW/state.img.width, VIEW/state.img.height);
+      const scale=base*state.zoom;
+      const dw=state.img.width*scale, dh=state.img.height*scale;
+      const dx=(VIEW-dw)/2+state.panX, dy=(VIEW-dh)/2+state.panY;
+      ctx.drawImage(state.img,dx,dy,dw,dh);
+    }
+    function setImage(img){
+      state.img=img; state.zoom=1; state.panX=0; state.panY=0;
+      clamp(); draw();
+      hint.classList.add("hidden");
+      drop.classList.add("has-photo");
+      zoomRow.classList.remove("hidden");
+      slider.value=1;
+    }
+    function getCrop(viewSize){
+      if(!state.img) return null;
+      const base=Math.max(VIEW/state.img.width, VIEW/state.img.height);
+      const scale=base*state.zoom;
+      const dw=state.img.width*scale, dh=state.img.height*scale;
+      const dx=(VIEW-dw)/2+state.panX, dy=(VIEW-dh)/2+state.panY;
+      const sx=-dx/scale, sy=-dy/scale, sw=VIEW/scale, sh=VIEW/scale;
+      return {img:state.img, sx, sy, sw, sh};
+    }
+
+    slider.addEventListener("input",()=>{ state.zoom=parseFloat(slider.value); clamp(); draw(); });
+
+    function ptFromEvent(e){
+      const t = e.touches ? e.touches[0] : e;
+      return {x:t.clientX, y:t.clientY};
+    }
+    canvas.addEventListener("pointerdown",(e)=>{
+      if(!state.img) return;
+      dragging=true; const p=ptFromEvent(e); lastX=p.x; lastY=p.y;
+      canvas.setPointerCapture && canvas.setPointerCapture(e.pointerId);
+    });
+    window.addEventListener("pointermove",(e)=>{
+      if(!dragging) return;
+      const p=ptFromEvent(e);
+      const rectScale = canvas.clientWidth ? (VIEW/canvas.clientWidth) : 1;
+      state.panX += (p.x-lastX)*rectScale;
+      state.panY += (p.y-lastY)*rectScale;
+      lastX=p.x; lastY=p.y;
+      clamp(); draw();
+    });
+    window.addEventListener("pointerup",()=>{ dragging=false; });
+
+    return {setImage, getCrop, drop};
+  }
+
+  /* ---------- SOLO FRAME ---------- */
+  const soloWidget = makePhotoWidget("previewCanvas","photoDrop","dropHint","zoomRow","zoomSlider");
+  const fileInput = $("fileInput");
+  const photoDrop = $("photoDrop");
+  const errorMsg = $("errorMsg");
+  const generateBtn = $("generateBtn");
+  const nameInput = $("nameInput");
+  const stackInput = $("stackInput");
+
+  photoDrop.addEventListener("click",()=>fileInput.click());
+  photoDrop.addEventListener("keydown",(e)=>{ if(e.key==="Enter"||e.key===" ") fileInput.click(); });
+  ["dragover"].forEach(ev=>photoDrop.addEventListener(ev,(e)=>e.preventDefault()));
+  photoDrop.addEventListener("drop",async(e)=>{
+    e.preventDefault();
+    const f=e.dataTransfer.files && e.dataTransfer.files[0];
+    if(f) await loadSoloFile(f);
+  });
+  fileInput.addEventListener("change",async(e)=>{
+    const f=e.target.files[0];
+    if(f) await loadSoloFile(f);
+  });
+
+  let soloReady=false;
+  async function loadSoloFile(file){
+    errorMsg.textContent="";
+    try{
+      const img=await fileToImage(file);
+      soloWidget.setImage(img);
+      soloReady=true;
+      checkSoloForm();
+    }catch(err){
+      errorMsg.textContent = err.message || "Could not open that photo.";
+    }
+  }
+  function checkSoloForm(){
+    generateBtn.disabled = !(soloReady && nameInput.value.trim() && stackInput.value.trim());
+  }
+  nameInput.addEventListener("input",checkSoloForm);
+  stackInput.addEventListener("input",checkSoloForm);
+
+  let lastSolo = null; // {name, stack, builderClass, crop}
+
+  $("generatorForm").addEventListener("submit", async (e)=>{
+    e.preventDefault();
+    if(generateBtn.disabled) return;
+    const crop = soloWidget.getCrop(VIEW);
+    if(!crop){ errorMsg.textContent="Add a photo first."; return; }
+    const name = nameInput.value.trim();
+    const stack = stackInput.value.trim();
+    const builderClass = getBuilderClass(stack);
+    lastSolo = {name, stack, builderClass, crop};
+    await runStamp();
+    await fontsReady();
+    renderSoloPoster();
+    showScene("resultScene");
+  });
+
+  function runStamp(){
+    return new Promise((resolve)=>{
+      const overlay=$("stampOverlay");
+      overlay.classList.remove("active");
+      void overlay.offsetWidth;
+      overlay.classList.add("active");
+      setTimeout(resolve, 520);
+      setTimeout(()=>overlay.classList.remove("active"), 900);
+    });
+  }
+
+  function renderSoloPoster(){
+    const canvas=$("posterCanvas");
+    const ctx=canvas.getContext("2d");
+    const W=canvas.width, H=canvas.height;
+    decorateBackground(ctx,W,H);
+
+    // sun blob behind photo
+    ctx.save();
+    blobPath(ctx, W/2, H*0.40, W*0.30, .07, 3);
+    ctx.fillStyle="#f2b134";
+    ctx.fill();
+    ctx.restore();
+
+    // title
+    ctx.textAlign="center";
+    ctx.fillStyle="#17190f";
+    ctx.font="700 46px Anton, sans-serif";
+    ctx.fillText("HACKER HOUSE GOA", W/2, 88);
+    ctx.font="700 20px 'Space Grotesk', sans-serif";
+    ctx.fillStyle="#25502f";
+    ctx.fillText("F R A M E   I N   G O A", W/2, 118);
+
+    // vine along left
+    drawVine(ctx,[[70,150],[110,260],[80,380],[120,470]],"#3f7a49");
+    drawVine(ctx,[[W-70,150],[W-110,260],[W-80,380],[W-120,470]],"#2f9e97");
+
+    // photo
+    const size=W*0.5;
+    const px=(W-size)/2, py=H*0.19;
+    ctx.save();
+    roundRectPath(ctx,px,py,size,size,34);
+    ctx.clip();
+    const c=lastSolo.crop;
+    ctx.drawImage(c.img, c.sx,c.sy,c.sw,c.sh, px,py,size,size);
+    ctx.restore();
+    ctx.save();
+    roundRectPath(ctx,px,py,size,size,34);
+    ctx.lineWidth=7;
+    ctx.strokeStyle="#17190f";
+    ctx.stroke();
+    ctx.restore();
+
+    // GOA stamp circle
+    ctx.save();
+    ctx.translate(px+size-14, py+14);
+    ctx.rotate(-.35);
+    ctx.beginPath(); ctx.arc(0,0,34,0,Math.PI*2);
+    ctx.fillStyle="#ef6f5b"; ctx.fill();
+    ctx.strokeStyle="#17190f"; ctx.lineWidth=3; ctx.stroke();
+    ctx.fillStyle="#f4e9cb"; ctx.font="700 16px Anton, sans-serif";
+    ctx.textAlign="center"; ctx.fillText("GOA",0,6);
+    ctx.restore();
+
+    // wave under photo
+    drawWave(ctx, px-10, py+size+34, size+20, 10, "#2f9e97", 5);
+
+    // name
+    ctx.fillStyle="#17190f";
+    ctx.font="700 42px Anton, sans-serif";
+    ctx.fillText(lastSolo.name.toUpperCase(), W/2, py+size+96);
+
+    // stack
+    ctx.fillStyle="#25502f";
+    ctx.font="600 22px 'Space Grotesk', sans-serif";
+    ctx.fillText(lastSolo.stack.toUpperCase(), W/2, py+size+128);
+
+    // builder class stamp
+    ctx.save();
+    ctx.translate(W/2, py+size+205);
+    ctx.rotate(-.06);
+    const label=lastSolo.builderClass;
+    ctx.font="700 34px Kalam, cursive";
+    const tw=ctx.measureText(label).width;
+    ctx.strokeStyle="#ef6f5b"; ctx.lineWidth=4;
+    ctx.strokeRect(-tw/2-24,-30,tw+48,58);
+    ctx.fillStyle="#ef6f5b";
+    ctx.textAlign="center";
+    ctx.fillText(label,0,12);
+    ctx.restore();
+
+    // small coconut + flower deco
+    drawLeaf(ctx, 130, H-120, 90,20, .3, "#3f7a49");
+    drawLeaf(ctx, W-130, H-120, 90,20, -.3+Math.PI, "#2f9e97");
+
+    // footer
+    ctx.fillStyle="#17190f";
+    ctx.font="600 20px 'Space Grotesk', sans-serif";
+    ctx.fillText("FRAME IN GOA", W/2, H-46);
+  }
+
+  function shareToX(){
+    const text = "Made my Hacker House Goa builder frame 🌴\nMake yours in seconds:\n"+location.href+"\n#FrameInGoa";
+    window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(text), "_blank", "noopener");
+  }
+
+  function downloadCanvas(canvas, filename){
+    canvas.toBlob((blob)=>{
+      const a=document.createElement("a");
+      a.href=URL.createObjectURL(blob);
+      a.download=filename;
+      document.body.appendChild(a); a.click(); a.remove();
+    }, "image/png");
+  }
+
+  $("downloadBtn").addEventListener("click",()=>downloadCanvas($("posterCanvas"),"hacker-house-goa-frame.png"));
+  $("shareBtn").addEventListener("click", shareToX);
+  $("anotherBtn").addEventListener("click", ()=>{
+    showScene("shackScene");
+  });
+  $("crewBtn").addEventListener("click", ()=>{ showScene("crewScene"); });
+  $("crewBackBtn").addEventListener("click", ()=>{ showScene("resultScene"); });
+
+  function showScene(id){
+    ["shackScene","resultScene","crewScene"].forEach(s=>{
+      const el=$(s);
+      if(!el) return;
+      if(s===id) el.classList.remove("hidden"); else el.classList.add("hidden");
+    });
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  /* ---------- CREW MODE ---------- */
+  const crewMembers=[]; // {img, name}
+  const crewList=$("crewList");
+  const crewAddBtn=$("crewAddBtn");
+  const crewFileInput=$("crewFileInput");
+  const crewGenerateBtn=$("crewGenerateBtn");
+  const crewError=$("crewError");
+
+  crewAddBtn.addEventListener("click", ()=>{
+    if(crewMembers.length>=5) return;
+    crewFileInput.click();
+  });
+  crewFileInput.addEventListener("change", async (e)=>{
+    const f=e.target.files[0];
+    crewFileInput.value="";
+    if(!f) return;
+    crewError.textContent="";
+    try{
+      const img=await fileToImage(f);
+      crewMembers.push({img, name:""});
+      renderCrewList();
+    }catch(err){
+      crewError.textContent = err.message || "Could not open that photo.";
+    }
+  });
+
+  function renderCrewList(){
+    crewList.innerHTML="";
+    crewMembers.forEach((m,i)=>{
+      const row=document.createElement("div");
+      row.className="crew-member";
+      const thumb=document.createElement("div");
+      thumb.className="thumb";
+      const imgTag=document.createElement("img");
+      imgTag.src=m.img.src;
+      thumb.appendChild(imgTag);
+      const nameField=document.createElement("input");
+      nameField.type="text";
+      nameField.placeholder="Teammate name";
+      nameField.value=m.name;
+      nameField.maxLength=20;
+      nameField.addEventListener("input",()=>{ m.name=nameField.value; checkCrewForm(); });
+      const rm=document.createElement("button");
+      rm.type="button"; rm.className="rm"; rm.innerHTML="&times;";
+      rm.addEventListener("click",()=>{ crewMembers.splice(i,1); renderCrewList(); });
+      row.appendChild(thumb); row.appendChild(nameField); row.appendChild(rm);
+      crewList.appendChild(row);
+    });
+    crewAddBtn.disabled = crewMembers.length>=5;
+    crewAddBtn.textContent = crewMembers.length>=5 ? "MAX 5 TEAMMATES" : "+ ADD TEAMMATE (up to 5)";
+    checkCrewForm();
+  }
+  function checkCrewForm(){
+    const namesOk = crewMembers.length>=2 && crewMembers.every(m=>m.name.trim().length>0);
+    crewGenerateBtn.disabled = !namesOk;
+  }
+
+  crewGenerateBtn.addEventListener("click", async ()=>{
+    if(crewGenerateBtn.disabled) return;
+    await fontsReady();
+    renderCrewPoster();
+    $("crewResultWrap").classList.remove("hidden");
+    $("crewCanvas").scrollIntoView({behavior:"smooth", block:"center"});
+  });
+
+  function coverCrop(img, targetSize){
+    const scale=Math.max(targetSize/img.width, targetSize/img.height);
+    const sw=targetSize/scale, sh=targetSize/scale;
+    const sx=(img.width-sw)/2, sy=(img.height-sh)/2;
+    return {sx,sy,sw,sh};
+  }
+
+  function renderCrewPoster(){
+    const canvas=$("crewCanvas");
+    const ctx=canvas.getContext("2d");
+    const W=canvas.width, H=canvas.height;
+    decorateBackground(ctx,W,H);
+
+    ctx.textAlign="center";
+    ctx.fillStyle="#17190f";
+    ctx.font="700 44px Anton, sans-serif";
+    ctx.fillText("HACKER HOUSE GOA", W/2, 84);
+    ctx.font="700 30px Kalam, cursive";
+    ctx.fillStyle="#ef6f5b";
+    ctx.fillText("The Crew", W/2, 128);
+
+    // layout polaroids
+    const n=crewMembers.length;
+    const areaTop=170, areaBottom=H-180, areaH=areaBottom-areaTop;
+    const baseSize = n<=3 ? 300 : 250;
+    const positions = [];
+    const cols = Math.min(n,3);
+    const spacingX = W/(cols+1);
+    crewMembers.forEach((m,i)=>{
+      const col = i % cols;
+      const row = Math.floor(i/cols);
+      const x = spacingX*(col+1) + (row%2===0?-18:18);
+      const y = areaTop + areaH*0.32 + row*(baseSize*0.72);
+      positions.push({x,y});
+    });
+
+    crewMembers.forEach((m,i)=>{
+      const size = baseSize - (i%2)*18;
+      const rot = ((i%2===0)?-1:1) * (4+ (i*3)%7) * Math.PI/180;
+      const pos = positions[i];
+      const px = pos.x - size/2, py = pos.y - size/2;
+      ctx.save();
+      ctx.translate(pos.x,pos.y);
+      ctx.rotate(rot);
+      // polaroid card
+      const pad=16, bottomPad=54;
+      ctx.fillStyle="#fffdf6";
+      ctx.strokeStyle="#17190f";
+      ctx.lineWidth=3;
+      roundRectPath(ctx,-size/2-pad, -size/2-pad, size+pad*2, size+pad+bottomPad, 6);
+      ctx.fill(); ctx.stroke();
+      // photo
+      ctx.save();
+      roundRectPath(ctx,-size/2,-size/2,size,size,4);
+      ctx.clip();
+      const crop = coverCrop(m.img,size);
+      // to keep resolution reasonable, scale using intrinsic size
+      const scale = size / Math.min(m.img.width, m.img.height);
+      const sw = size/scale, sh=size/scale;
+      const sx=(m.img.width-sw)/2, sy=(m.img.height-sh)/2;
+      ctx.drawImage(m.img, sx,sy,sw,sh, -size/2,-size/2, size, size);
+      ctx.restore();
+      // name handwritten
+      ctx.fillStyle="#17190f";
+      ctx.font="700 22px Kalam, cursive";
+      ctx.textAlign="center";
+      ctx.fillText(m.name.toUpperCase(), 0, size/2+34);
+      ctx.restore();
+    });
+
+    // decorative leaves scattered
+    leafCluster(ctx, 90, H-130, .9, .6, ["#3f7a49","#25502f","#2f9e97"]);
+    leafCluster(ctx, W-90, H-130, -.9, .6, ["#3f7a49","#25502f","#ef6f5b"]);
+    drawWave(ctx, 40, H-96, W-80, 8, "#2f9e97", 4);
+
+    ctx.fillStyle="#17190f";
+    ctx.font="700 26px Anton, sans-serif";
+    ctx.fillText("WE BUILD TOGETHER", W/2, H-52);
+    ctx.font="600 18px 'Space Grotesk', sans-serif";
+    ctx.fillStyle="#25502f";
+    ctx.fillText("#FrameInGoa", W/2, H-24);
+  }
+
+  $("crewDownloadBtn").addEventListener("click",()=>downloadCanvas($("crewCanvas"),"hacker-house-goa-crew.png"));
+  $("crewShareBtn").addEventListener("click", shareToX);
+
+  renderCrewList();
+})();
+</script>
+</body>
+</html>
